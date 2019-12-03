@@ -62,9 +62,9 @@ class MyFrame(wx.Frame):
 import profile
 
 def pro():
-    path_l = r"F:/rtxdownload/File/2019-09/TRecommendCombobak.prefab".replace(
+    path_l = r"G:\naruto_next_proj\release\god_trunk\TheNextMOBA\Assets\Resources\Prefabs\UI\Task\Window\UILobbyTask.prefab".replace(
         "\\", "/")
-    path_r = r"F:/rtxdownload/File/2019-09/TRecommendCombo.prefab".replace(
+    path_r = r"G:\naruto_next_proj\release\god_trunk\TheNextMOBA\Assets\Resources\Prefabs\UI\Task\Window\UILobbyTask2.prefab".replace(
         "\\", "/")
     fileFormat = CompareOption.GetFileFormatByUrl(path_l)
     option = CompareOption.GetDefaultValue()
@@ -93,7 +93,7 @@ if __name__ == '__main__':
         type = 2
 
     if type == 1:
-        fileFormat = CompareOption.GetFileFormatByUrl(path_l)
+        fileFormat = CompareOption.GetFileFormatByUrl(path_r)
         option = CompareOption.GetDefaultValue()
         option.file_format = fileFormat
         data = PageData(path_l, None, path_r, option)

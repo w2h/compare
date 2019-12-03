@@ -1,12 +1,11 @@
-#coding=utf-8
+#coding:utf-8
 import os
-import requests
 import json
 import time
-from data import *
+# from data import *
 import svn.remote
 import urllib
-import time
+# import time
 import base64
 from diff_match_patch import diff_obj
 # from diff import diff_obj
@@ -35,12 +34,6 @@ lt = 10
 # r_url  = r"G:\naruto_next_proj\release\god_trunk\TheNextMOBA\Assets\Resources\Prefabs\UI\Task\Window/UILobbyTask3.prefab".replace(
 #                 "\\", "/")
 
-l_url = r"D:\workspace\Poland\pl_client_proj\branches\PL_NarutoAlpha3.39\src\naruto.welfare\src\com\tencent\morefun\naruto\plugin\welfare\views\combat\CombatTabItemRenderer.as"
-r_url = r"D:\workspace\German\de_client_proj\branches\DE_NarutoAlpha5.50\src\naruto.welfare\src\com\tencent\morefun\naruto\plugin\welfare\views\combat\CombatTabItemRenderer.as"
-l_file = File(l_url)
-r_file = File(r_url)
-l_ct = l_file.lines
-r_ct = r_file.lines
 # l_ct = "var npcIcon:Sprite;"
 # r_ct = "var npcIcon:Image;"
 # arr = diff_obj.diff_main(l_ct, r_ct)
@@ -54,9 +47,7 @@ st = time.time()
 arr.pop(2)
 arr.pop(2)
 le = len(arr)
-# with open("Compare_icon.ico",'rb') as f:
-#     base64_data = base64.b64encode(f.read())
-#     print base64_data.decode()
+
 
 
 # print "1" is "1"
@@ -71,51 +62,24 @@ le = len(arr)
 # print os.getcwd()
 # os.system("svn update IPage.as")
 # print os.path.exists("http://tc-svn.tencent.com/narutoI18n/fr_client_proj/trunk/src/naruto.activity/src/com/tencent/morefun/naruto/plugin/activity/openService")
-os.chdir(os.getcwd())
 
-p = os.popen('svn info')
-s = unicode(p.read().decode("gbk"))
-lines = s.split("\n")
-for line in lines:
-    if line.startswith(u"最后修改的版本"):
-        print line
+import wx
+import wx.lib.sized_controls as sc
 
-def get_svn_revision(s):
-    s = unicode(p.read().decode("utf-8"))
-    lines = s.split("\n")
-    for line in lines:
-        if line.startswith(u"Last Changed Rev"):
-            arr = line.split(" ")
-            return arr[-1]
+app = wx.App(0)
 
+frame = sc.SizedFrame(None, -1, "A sized frame")
 
-def get_svn_diff_files(path):
-    os.chdir(path)
-    p = os.popen("svn info -r BASE")
-    curR = get_svn_revision(p.read().decode())
-    p = os.popen("svn info -r HEAD")
-    newR = get_svn_revision(p.read().decode())
+pane = frame.GetContentsPane()
+pane.SetSizerType("horizontal")
 
-    p = os.popen("svn diff -r"+curR+":"+newR)
-    s = unicode(p.read().decode())
-    lines = s.split("\n")
-    arr = []
-    for line in lines:
-        if line.startswith("Index:"):
-            value = line.split(" ")
-            file = value[-1]
-            arr.append(file)
-    return arr
+b1 = wx.Button(pane, wx.ID_ANY)
+t1 = wx.TextCtrl(pane, -1)
+t1.SetSizerProps(expand=True)
+
+frame.Show()
+
+app.MainLoop()
 
 
-
-
-def getrevision(path):
-    os.chdir(path)
-    p = os.popen('svn info')
-    s = unicode(p.read().decode("gbk"))
-    lines = s.split("\n")
-    for line in lines:
-        if line.startswith(u"最后修改的版本"):
-            print line
 

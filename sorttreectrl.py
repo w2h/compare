@@ -391,13 +391,14 @@ class TreeCompareScrollCtrl(object):
     def _on_scroll_change(self,evt):
         tree = evt.GetEventObject()
         firstItem = tree.GetFirstVisibleItem()
-        itemData = tree.GetItemData(firstItem)
-        for otherTree in self.tree_arr:
-            if otherTree is not tree:
-                item,data = otherTree.ge_item_by_relative_path(itemData.relative_path)
-                if item:
-                    otherTree.ScrollTo(item)
-        evt.Skip()
+        if firstItem and firstItem.IsOk():
+            itemData = tree.GetItemData(firstItem)
+            for otherTree in self.tree_arr:
+                if otherTree is not tree:
+                    item,data = otherTree.ge_item_by_relative_path(itemData.relative_path)
+                    if item:
+                        otherTree.ScrollTo(item)
+            evt.Skip()
 
     def destory(self):
         for tree in self.tree_arr:

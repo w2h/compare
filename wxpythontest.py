@@ -150,14 +150,16 @@ class MyFrame(wx.Frame):
     def __init__(self, parent, id):
         wx.Frame.__init__(self, parent, id, "FrameWithButton", size = (1000, 900))
         self.panel = wx.Panel(self) # 初始化容器
-        btn = wx.Button(self.panel,wx.ID_ANY,label="Load Pictue",pos=wx.Point(900,30),style=wx.BU_BOTTOM)#初始化一个按钮
+        btn = wx.Button(self.panel,wx.ID_ANY,label="Load Pictue",pos=wx.Point(900,30))#初始化一个按钮
+        btn.Enable(True)
+        tc = wx.TextCtrl(self.panel, id=wx.ID_ANY, pos=wx.Point(800,70))
         # line = wx.StaticLine(self.panel,pos=wx.Point(100,50))
         self.Bind(wx.EVT_BUTTON, self.OnButtonClick,btn)#绑定按钮点击后处理器
         text = MyTextCtrl(self.panel,size=wx.Size(800,800))
         # self.codeText = text
         self.style_text = text
-        as_file = r"G:\naruto_next_proj\release\god_trunk\TheNextMOBA\Assets\Resources\Prefabs\UI\Task\Window/UILobbyTask3.prefab".replace("\\","/")
-        file = PrefabFile(as_file)
+        # as_file = r"G:\naruto_next_proj\release\god_trunk\TheNextMOBA\Assets\Resources\Prefabs\UI\Task\Window/UILobbyTask3.prefab".replace("\\","/")
+        # file = PrefabFile(as_file)
         self.file = file
         # self.SetKeyWords(0," ".join(keyword.kwlist))
         # self.SetLexer(stc.STC_LEX_NULL)

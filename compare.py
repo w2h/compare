@@ -165,7 +165,9 @@ class TwoSideTextCmp(object):
             del self.text_r
 
     def compare(self):
-        pass
+        leftLineDatas = self.file_l.get_line_datas();
+        rightLineDatas = self.file_r.get_line_datas();
+        self._compare_chunk(leftLineDatas,rightLineDatas);
 
     def clear(self):
         self.text_l.ClearAll()
