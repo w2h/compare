@@ -48,7 +48,7 @@ class ToolBar(wx.Panel):
                                               pos=wx.Point(25, 10), name=ToolBar.BLANK_LINE)
         self.format_btn = wx.ComboBox(self, id=wx.ID_ANY,
                                       choices=[FileFormat.NormalText, FileFormat.XML, FileFormat.AS],
-                                      size=wx.Size(120, 30), pos=wx.Point(25, 10), name=ToolBar.FORMAT)
+                                      size=wx.Size(120, 10), pos=wx.Point(25, 10), name=ToolBar.FORMAT)
         self.format_btn.SetEditable(False)
         self.check_error_btn = wx.Button(self, id=wx.ID_ANY, label="检查错误", size=wx.Size(80, 30), pos=wx.Point(25, 10),
                                          name=ToolBar.CHECK_ERROR)
@@ -73,11 +73,11 @@ class ToolBar(wx.Panel):
 
         self.filter = wx.ComboBox(self, id=wx.ID_ANY,
                                   choices=[".txt", ".xml", ".as"],
-                                  size=wx.Size(120, 30), pos=wx.Point(25, 10), name=ToolBar.FILE_FILTER)
+                                  size=wx.Size(120, 10), pos=wx.Point(25, 10), name=ToolBar.FILE_FILTER)
 
         self.merge_filter = wx.ComboBox(self, id=wx.ID_ANY,
                                   choices=[CompareFilter.ALL, CompareFilter.MERGEABLE, CompareFilter.CONFLICT, CompareFilter.SAME],
-                                  size=wx.Size(120, 30), pos=wx.Point(25, 10), name=ToolBar.MERGE_FILTER)
+                                  size=wx.Size(120, 10), pos=wx.Point(25, 10), name=ToolBar.MERGE_FILTER)
         self.merge_filter.SetValue(CompareFilter.ALL)
         self.merge_filter.SetEditable(False)
         self.show_conflict_btn = wx.BitmapButton(self, bitmap=wx.ArtProvider.GetBitmap(wx.ART_WARNING), pos=wx.Point(10, 10),
@@ -898,7 +898,6 @@ class TwoSidePageController(PageController):
                 self._on_save_point_reached(None)
             elif keyCode == ord("F"):
                 print "find"
-                self.
         evt.Skip()
 
 class PageManager(object):
