@@ -27,7 +27,7 @@ rightPath=ur"D:\workspace\German\de_client_proj\trunk\src\naruto.activity\src\co
 class MyFrame(wx.Frame):
     def __init__(self, parent,title,id=wx.ID_ANY):
         wx.Frame.__init__(self, parent, id, title, pos=wx.DefaultPosition,
-                          size=wx.Size(1400, 800), style=wx.DEFAULT_FRAME_STYLE | wx.TAB_TRAVERSAL)
+                          size=wx.Size(1400, 810), style=wx.DEFAULT_FRAME_STYLE | wx.TAB_TRAVERSAL)
 
         self.rootBook = wx.Notebook(self, wx.ID_ANY, wx.DefaultPosition)
 
